@@ -1,4 +1,4 @@
-package com.jaugusto.APICadastro;
+package com.jaugusto.APICadastro.Funcionarios;
 
 
 import org.springframework.web.bind.annotation.GetMapping;

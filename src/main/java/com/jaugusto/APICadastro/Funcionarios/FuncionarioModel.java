@@ -1,18 +1,23 @@
-package com.jaugusto.APICadastro;
+package com.jaugusto.APICadastro.Funcionarios;
 
 
+import com.jaugusto.APICadastro.Atribuicoes.AtribuicoesModel;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tb_cadastro")
+@Table(name = "tb_funcionario")
 public class FuncionarioModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String nome;
-    String email;
-    int idade;
+    private Long id;
+    private String nome;
+    private String email;
+    private int idade;
+    //Vários Funcionários podem tem uma atribuição
+    @ManyToOne
+    @JoinColumn(name = "atribuicoes_id")  //Chave estrangeira.
+    private AtribuicoesModel atribuicoes;
 
     public FuncionarioModel(String nome, String email, int idade) {
         this.nome = nome;
