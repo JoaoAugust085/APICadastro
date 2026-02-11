@@ -22,21 +22,21 @@ public class FuncionarioController {
 
     // Adicionar Funcionário (CREATE)
     @PostMapping("/criar")
-    public String criarFuncionario(){
-        return "Funcionario Criado com sucesso";
+    public FuncionarioModel criarFuncionario(@RequestBody FuncionarioModel funcionario){
+        return funcionarioService.criarFuncionario(funcionario);
     }
 
     // Mostrar todos os Funcionários (READ)
 
-    @GetMapping("/todos")
+    @GetMapping("/listar")
     public List<FuncionarioModel> listarFuncionarios(){
         return funcionarioService.listarFuncionarios();
     }
 
     // Mostrar Funcionário por ID (READ)
-    @GetMapping("/porID")
-    public String mostrarFuncionarioPorId(){
-        return "Funcionario do ID";
+    @GetMapping("/listar/{id}")
+    public FuncionarioModel listarFuncionarioPorId(@PathVariable Long id){
+        return funcionarioService.pesquisarFuncionarioPorId(id);
     }
 
 
