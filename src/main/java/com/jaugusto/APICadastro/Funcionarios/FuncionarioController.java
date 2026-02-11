@@ -3,10 +3,17 @@ package com.jaugusto.APICadastro.Funcionarios;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping
 public class FuncionarioController {
 
+    private FuncionarioService funcionarioService;
+
+    public FuncionarioController(FuncionarioService funcionarioService) {
+        this.funcionarioService = funcionarioService;
+    }
 
     @GetMapping("/welcome")
     public String boasVindas(){
@@ -22,8 +29,8 @@ public class FuncionarioController {
     // Mostrar todos os Funcionários (READ)
 
     @GetMapping("/todos")
-    public String mostrarTodosOsFuncionarios(){
-        return "Todos os Funcionarios";
+    public List<FuncionarioModel> listarFuncionarios(){
+        return funcionarioService.listarFuncionarios();
     }
 
     // Mostrar Funcionário por ID (READ)
