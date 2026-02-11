@@ -10,7 +10,6 @@ import java.util.List;
 @Table(name = "tb_atribuicoes")
 public class AtribuicoesModel {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
