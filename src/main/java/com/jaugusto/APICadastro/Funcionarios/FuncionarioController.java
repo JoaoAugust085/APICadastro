@@ -41,15 +41,17 @@ public class FuncionarioController {
 
 
     // Alterar dados dos Funcionários (UPDATE)
-    @PutMapping("/alterarID")
-    public String alterarFuncionarioPorId(){
-        return "Ninja Alterado";
+    @PutMapping("/alterar/{id}")
+    public FuncionarioModel alterarFuncionarioPorId(@PathVariable Long id, @RequestBody FuncionarioModel funcionarioAtualizado){
+        return funcionarioService.alterarFuncionarioPorId(id, funcionarioAtualizado);
     }
 
+
+
     // Deletar Funcionario (DELETE)
-    @DeleteMapping("/deletarID")
-    public String deletarFuncionarioPorId(){
-        return "Funcionario deletado por ID";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarFuncionarioPorId(@PathVariable Long id){
+        funcionarioService.deletarFuncionarioPorId(id);
     }
 
 }
