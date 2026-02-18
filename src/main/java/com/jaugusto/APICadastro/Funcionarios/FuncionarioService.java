@@ -9,10 +9,12 @@ import java.util.Optional;
 public class FuncionarioService {
 
     private FuncionarioRepository funcionarioRepository;
+    private FuncionarioMapper funcionarioMapper;
 
 
-    public FuncionarioService(FuncionarioRepository funcionarioRepository) {
+    public FuncionarioService(FuncionarioRepository funcionarioRepository, FuncionarioMapper funcionarioMapper) {
         this.funcionarioRepository = funcionarioRepository;
+        this.funcionarioMapper = funcionarioMapper;
     }
 
     //Listar todos os meus ninjas
@@ -27,8 +29,10 @@ public class FuncionarioService {
     }
 
     //Criar um Funcionario no DB
-    public FuncionarioModel criarFuncionario(FuncionarioModel funcionario){
-        return funcionarioRepository.save(funcionario);
+    public FuncionarioDTO criarFuncionario(FuncionarioDTO funcionarioDTO){
+        FuncionarioModel funcionario = funcionarioMapper.map(funcionarioDTO);
+        funcionario = funcionarioRepository.save(funcionario);
+        return funcionarioMapper.map(funcionario);
     }
 
     //Deletar o cadastro de algum Funcionário

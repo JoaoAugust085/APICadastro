@@ -17,10 +17,14 @@ public class FuncionarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
     @Column(unique = true)
     private String email;
+
     private int idade;
+
     //Vários Funcionários podem tem uma atribuição
     @ManyToOne
     @JoinColumn(name = "atribuicoes_id")  //Chave estrangeira.
