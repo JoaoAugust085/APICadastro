@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class FuncionarioMapper {
 
 
-    public FuncionarioModel map(FuncionarioDTO funcionarioDTO){
+    public FuncionarioModel toModel(FuncionarioDTO funcionarioDTO){
         FuncionarioModel funcionarioModel = new FuncionarioModel();
         funcionarioModel.setId(funcionarioDTO.getId());
         funcionarioModel.setNome(funcionarioDTO.getNome());
@@ -20,7 +20,7 @@ public class FuncionarioMapper {
         return funcionarioModel;
     }
 
-    public FuncionarioDTO map(FuncionarioModel funcionarioModel){
+    public FuncionarioDTO toDTO(FuncionarioModel funcionarioModel){
         FuncionarioDTO funcionarioDTO = new FuncionarioDTO();
         funcionarioDTO.setId(funcionarioModel.getId());
         funcionarioDTO.setNome(funcionarioModel.getNome());
