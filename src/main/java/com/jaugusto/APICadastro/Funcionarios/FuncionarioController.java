@@ -22,34 +22,36 @@ public class FuncionarioController {
 
     // Adicionar Funcionário (CREATE)
     @PostMapping("/criar")
-    public String criarFuncionario(){
-        return "Funcionario Criado com sucesso";
+    public FuncionarioDTO criarFuncionario(@RequestBody FuncionarioDTO funcionario){
+        return funcionarioService.criarFuncionario(funcionario);
     }
 
     // Mostrar todos os Funcionários (READ)
 
-    @GetMapping("/todos")
-    public List<FuncionarioModel> listarFuncionarios(){
+    @GetMapping("/listar")
+    public List<FuncionarioDTO> listarFuncionarios(){
         return funcionarioService.listarFuncionarios();
     }
 
     // Mostrar Funcionário por ID (READ)
-    @GetMapping("/porID")
-    public String mostrarFuncionarioPorId(){
-        return "Funcionario do ID";
+    @GetMapping("/listar/{id}")
+    public FuncionarioDTO listarFuncionarioPorId(@PathVariable Long id){
+        return funcionarioService.pesquisarFuncionarioPorId(id);
     }
 
 
     // Alterar dados dos Funcionários (UPDATE)
-    @PutMapping("/alterarID")
-    public String alterarFuncionarioPorId(){
-        return "Ninja Alterado";
+    @PutMapping("/alterar/{id}")
+    public FuncionarioDTO alterarFuncionarioPorId(@PathVariable Long id, @RequestBody FuncionarioDTO funcionarioAtualizado){
+        return funcionarioService.alterarFuncionarioPorId(id, funcionarioAtualizado);
     }
 
+
+
     // Deletar Funcionario (DELETE)
-    @DeleteMapping("/deletarID")
-    public String deletarFuncionarioPorId(){
-        return "Funcionario deletado por ID";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarFuncionarioPorId(@PathVariable Long id){
+        funcionarioService.deletarFuncionarioPorId(id);
     }
 
 }
